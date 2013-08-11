@@ -1,0 +1,43 @@
+---
+layout: post
+title: "滴水藏海20130811"
+date: 2013-08-11 21:17
+comments: true
+categories: 滴水藏海
+tags: Youth Links Weekly
+---
+
+之前在博客上有一个分类--滴水藏海，这名字我一直都蛮喜欢的，可惜当时只是摘录一些只言片语。这几天想到写一个一周的资源汇总，索性就借用这个名字吧，希望能够一直坚持下去。
+
+# Tech
+
+[软件工程 敏捷的酒后问答](http://www.cnblogs.com/xinz/archive/2011/04/27/2031118.html)
+
+之前在南京实习的时候，公司就是利用这种方式。当我看到这篇文章的时候，非常惊讶，原来这就是敏捷开发啊。。。
+
+[TryjQuery](http://blog.jobbole.com/37699/)
+
+整套视频貌似只有三四个小时的样子，讲解异常简洁，非常推荐
+
+[图解Git](http://marklodato.github.io/visual-git-guide/index-zh-cn.html)
+
+话说平时用的git命令实在少得可怜，真到遇到问题的时候却不知所措了，配合着图讲命令非常易于理解。
+
+[Web开发的发展史](http://blog.jobbole.com/45169/)
+
+能把这十几年的Web发展史讲解得这么通俗易懂，赞一个。
+
+# Life
+
+[长日无痕](http://tchen.me/posts/2013-07-27-the-remains-of-the-day.html)
+
+[天时地利人和](http://chuansong.me/n/135782)
+
+[寒门难出贵子](http://bbs.tianya.cn/post-funinfo-4011358-1.shtml)
+
+花了很长时间读这篇文章，读完全文后惶惶不可终日。也有许多人在网上也就许多人发表了看法，[论寒门与贵子](http://chuansong.me/n/95336)，还有知乎上的一个相近问题[
+如何看待「寒门难再出贵子」的观点？](http://www.zhihu.com/question/19804182)。
+
+每个人都有自身局限性，可能从一个人的历程来看，会得出这样一个结论，而从另外一个人的经历来看这样的一个结论荒谬至极。以我浅薄的资历对这个问题貌似没有发言权，不过从文章的叙述中，作者一直在强调：这个社会是一个关系社会，人脉是要积累的，没有人脉步履维艰。
+
+这倒是让我想起来看过的另外一篇文章[清华差生10年奋斗经历](http://www.iheima.com/archives/14359.html)

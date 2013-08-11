@@ -7,10 +7,25 @@ categories: Essay
 tags: Essay Youth
 ---
 
+# 搬迁
+
 有一段时间没有打理博客了，最近正好稍微有点时间，实在是忍受不了Octopress的页面生成速度，索性就把博客从Octopress搬回了Jekyll。
 
-站放在Github上，等把新域名买了，再把域名换了，话说Github真是一个优秀的产品。顺便感谢下[Yonsm](https://github.com/Yonsm/NET)提供了这么好的模板，让我省了好多事。
+站放在Github上，等把新域名买了，再把域名换了，话说Github真是一个优秀的产品。顺便感谢下[Yonsm](https://github.com/Yonsm/NET)提供了这么好的模板，让我省了好多事。Jekyll这种写作方式实在迷人，Markdown+Vim的组合让人欲罢不能。同时，也希望这是我博客的最后一次搬迁。
 
-趁着搬迁，就把原先的文章都整理了一下。看自己的文章，就好象在看电影一样，只不过主角是自己。不过三年半的时间，删删剪剪，就这么31篇文章，而且质量都不高，实在惭愧。以后真要勤奋读书，多写文章了。
+趁着搬迁，就把原先的文章都整理了一下。看自己的文章，就好象在看电影一样，只不过主角是自己。不过三年半的时间，删删减减，就这么31篇文章，而且质量都不高，实在惭愧。知识是一个积累和吸收的过程，冰冻三尺，非一日之寒，以后真要勤奋读书，多写文章了。
 
-Jekyll这种写作方式实在迷人，Markdown+Vim的组合让人欲罢不能。同时，也希望这是我博客的最后一次搬迁。
+# 信息选择与获取
+
+一直都觉得自己信息过载，所以很久以前就不再看微博或者Twitter这种噪音相对较大的东西了。可是自从Google Reader宣布关闭以后，突然发现可以月的的信息竟然少得可怜，这使我不得不做出一些改变。
+
+经过了一段时间的调整，又有了以前那种信息唾手可得的感觉。
+
+- 每天固定看[v2ex.com](https://www.v2ex.com/)，[Startup News](http://news.dbanotes.net/)(话说Startup News的信息质量是真高)
+- 订阅一些质量高的微信公众帐号，比较热门的在[传送门](http://chuansong.me/)上都有(不得不赞一下微信的排版，真是阅读利器)
+- 那些以前在Google Reader上看的精选博客通过[blogtrottr](http://blogtrottr.com/)订阅，直接推送到邮箱
+- 平时看到的一些零碎的东西手勤一点，收集到[Delicious](https://delicious.com/)上
+- 每天看[知乎阅读](http://www.zhihu.com/read)，不过我比较喜欢通过Zaker看
+- 如果还有时间就在Zaker找频道看看
+
+最近还看到这样一篇文章，[如何在云端搭建反社交APP](http://www.yangzhiping.com/tech/anti-social-tools.html)。其实我一直都是RSS Reader的死忠，可是自从这次Google Reader关闭以后。。。恩，数据还是在自己手里靠谱一点。
