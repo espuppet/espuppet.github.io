@@ -1,0 +1,47 @@
+<p>最近接触到一些Javascript，感觉Ajax比较强大，比PHP这样的服务器端脚本灵活许多。由于自己本身不会JS，也就只能边搜索边用，好在有jQuery，用起来真的比较方便。</p>
+
+<p>使用到的插件有时间选择插件<a href='http://jqueryui.com/datepicker/'>jQuery-UI-datePicker</a>和<a href='http://trentrichardson.com/examples/timepicker/'>jQuery-UI-TimePicker-addon</a>以及分页插件<a href='http://www.datatables.net/'>dataTables</a>。</p>
+<!-- more -->
+<h2 id='jqueryuidatepickerjqueryuitimepicker'>jQuery-UI-datePicker和jQuery-UI-TimePicker</h2>
+
+<p>TimePicker实际是datePicker的一个插件，需要嵌入datePicke中使用。由于项目中有限制时间选择区间的需求，可以借助Timepicker中的<code>minDateTime</code>和<code>maxDateTime</code>参数实现。</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>current</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nb'>Date</span><span class='p'>();</span>
+<span class='kd'>var</span> <span class='nx'>temp</span> <span class='o'>=</span> <span class='nx'>current</span><span class='p'>.</span><span class='nx'>getDay</span><span class='p'>()</span> <span class='o'>+</span> <span class='mi'>7</span><span class='p'>;</span>
+<span class='kd'>var</span> <span class='nx'>maxDate</span> <span class='o'>=</span> <span class='k'>new</span> <span class='nb'>Date</span><span class='p'>();</span>
+<span class='nx'>limit</span><span class='p'>.</span><span class='nx'>setDate</span><span class='p'>(</span><span class='nx'>temp</span><span class='p'>);</span>
+<span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;#targetID&#39;</span><span class='p'>).</span><span class='nx'>datetimepicker</span><span class='p'>({</span>
+    <span class='nx'>showSecond</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span>
+    <span class='nx'>timeFormat</span><span class='o'>:</span> <span class='s1'>&#39;HH:mm:ss&#39;</span><span class='p'>,</span>
+    <span class='nx'>stepHour</span><span class='o'>:</span> <span class='mi'>2</span><span class='p'>,</span>
+    <span class='nx'>stepMinute</span><span class='o'>:</span> <span class='mi'>10</span><span class='p'>,</span>
+    <span class='nx'>stepSecond</span><span class='o'>:</span> <span class='mi'>10</span><span class='p'>,</span>
+    <span class='nx'>minDateTime</span><span class='o'>:</span> <span class='nx'>current</span><span class='p'>,</span>
+    <span class='nx'>maxDateTime</span><span class='o'>:</span> <span class='nx'>maxDate</span><span class='p'>,</span>
+<span class='p'>});</span>
+</code></pre></div>
+<h2 id='datatables'>dataTables</h2>
+
+<p>dataTables的数据来源有四种：DOM,Javascript数组，Ajax源以及服务器端数据。由于项目中的数据比较多，所以选择了最后一种。具体的可以参考<a href='http://www.datatables.net/examples/data_sources/server_side.html'>官方文档</a>。</p>
+
+<p>dataTables的初始化：</p>
+<div class='highlight'><pre><code class='js'><span class='kd'>var</span> <span class='nx'>oTable</span><span class='o'>=</span><span class='nx'>$</span><span class='p'>(</span><span class='s1'>&#39;#jq_tablepage&#39;</span><span class='p'>).</span><span class='nx'>dataTable</span><span class='p'>({</span>
+        <span class='s2'>&quot;bSort&quot;</span><span class='o'>:</span> <span class='kc'>false</span><span class='p'>,</span>
+        <span class='s2'>&quot;bPaginate&quot;</span><span class='o'>:</span> <span class='kc'>true</span><span class='p'>,</span>
+        <span class='s2'>&quot;bJQueryUI&quot;</span><span class='o'>:</span> <span class='kc'>false</span><span class='p'>,</span>
+        <span class='s2'>&quot;sPaginationType&quot;</span><span class='o'>:</span> <span class='s2'>&quot;full_numbers&quot;</span><span class='p'>,</span>
+        <span class='s2'>&quot;sAjaxSource&quot;</span><span class='o'>:</span> <span class='s2'>&quot;../examples_support/server_processing.php&quot;</span>
+        <span class='s2'>&quot;oLanguage&quot;</span><span class='o'>:</span> <span class='p'>{</span>
+        <span class='s2'>&quot;sUrl&quot;</span><span class='o'>:</span> <span class='s2'>&quot;./js/datatable.language&quot;</span><span class='p'>}</span>
+        <span class='p'>});</span>
+</code></pre></div>
+<p>Ajax向服务器请求数据是传入的参数有：显示起始数<code>iDisplayStart</code>，显示条目数<code>iDisplayLength</code>，排序列数目<code>iSortingClos</code>，排序列<code>iSortingClo_1</code>以及搜索条件<code>sSearch</code>。</p>
+
+<p>其中，服务器端需要返回的数据格式如下。</p>
+<div class='highlight'><pre><code class='php'><span class='x'>$output = array(</span>
+<span class='x'>        &quot;sEcho&quot; =&gt; intval($_GET[&#39;sEcho&#39;]),</span>
+<span class='x'>        &quot;iTotalRecords&quot; =&gt; $iTotal,</span>
+<span class='x'>        &quot;iTotalDisplayRecords&quot; =&gt; $iFilteredTotal,</span>
+<span class='x'>        &quot;aaData&quot; =&gt; array()</span>
+<span class='x'>        );</span>
+</code></pre></div>
+<p>sEcho由前端AJAX请求产生，可以在<code>$_GET</code>中获得，<code>$iTotal</code>为查询条目总数，<code>$iFilteredTotal</code>为加上过滤条件后的条目总数，<code>aaData</code>为实际数据，格式为无Index的Json格式。</p>

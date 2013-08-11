@@ -1,0 +1,64 @@
+---
+layout: post
+title: "Yii框架中的权限使用"
+date: 2013-03-16 11:05
+comments: true
+categories: Program Web
+tags: php Program Web
+---
+
+权限功能的一直是各个PHP框架中比较核心的一个功能，只需要少量代码即可实现较复杂的权限管理。
+
+Yii框架亦如此，但是使用框架中的权限功能还是需要一定的学习成本。这里分享一些自己学习和使用的经验。主要参考了Yii框架官方文档中的[授权和验证](http://www.yiiframework.com/doc/guide/1.1/zh_cn/topics.auth)部分，Yii权限扩展模块[Rights](http://code.google.com/p/yii-rights/)以及Yii的[CAuthManager](http://www.yiiframework.com/doc/api/1.1/CAuthManager)接口文档。
+
+<!-- more -->
+
+##基于角色的访问控制
+
+由于项目中的权限需求比较复杂，所以直接使用了基于角色的访问控制(Role-Based Access Control)。
+
+Yii框架的RBAC中，将权限分为三层：操作(operations)，任务(tasks)和角色(roles)。操作是权限中的最底层，是包含最少动作的一个集合(Rights中将每一个action视为一个Opreation，当然你也可以自己定义)；任务由若干操作组成，(Rights将一个Controller视作一个Task）；角色则由若干任务组成。为了保持灵活性，Yii允许同层的权限相互包含：一个操作可以包含其他操作，一个任务可以包含其他任务，一个角色可以包含其他角色。
+
+操作，任务和角色都是授权项目(authorization item)，可以理解为某个行为的许可。
+
+如果以上还不足以满足你的需求，那就需要利用业务规则了。一个业务规则就是一段PHP代码，在执行权限的时候被检查。例如在创建权限的时候，添加业务规则：
+
+{% highlight php %}
+$bizRule='return Yii::app()->user->id==$params["post"]->authID;';
+$task=$auth->createTask('updateOwnPost','update a post by author himself',$bizRule);
+{% endhighlight %}
+
+*注：写入业务规则的时候不要忘记分号，否则是无效的。*
+
+在检查权限的时候传入参数，使业务规则作用：
+
+{% highlight php %}
+$params=array('post'=>$post);
+if(Yii::app()->user->checkAccess('updateOwnPost',$params))
+    //Some action
+{% endhighlight %}
+
+##Rights
+
+Rights拥有一个可视化编辑的界面，以及自动进行权限检验的功能。Rights的安装在其[说明文档](http://yii-rights.googlecode.com/files/yii-rights-doc-1.2.0.pdf)中有详细的说明，此处不再说明。
+
+如果需要使用Rights的自动检验功能，需要使你的Controller继承RController。并且在Controller里添加以下代码：
+
+{% highlight php %}
+public function filters()
+{
+    return array(
+    'rights',
+    );
+}
+public function allowedActions()
+{
+    return 'index, suggestedTags';
+}
+{% endhighlight %}
+
+其中，allowedActions是不需要权限检验即可访问的Action。
+
+##权限接口
+
+在实际使用到权限的时候，可能需要使用Yii提供的权限接口。具体可以参考[这里](http://www.yiiframework.com/doc/api/1.1/CAuthManager)，需要注意的是，有些方法虽然只差了一个s，但是相差甚远，比如getAuthItem()和getAuthItems()，前面一个返回CAuthItem，而后面一个返回的却是一个Array()。

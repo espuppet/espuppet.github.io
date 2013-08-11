@@ -1,0 +1,106 @@
+<p>作为一个文本编辑器，Vim具有所有文本编辑器应有的功能，而且更有其他文本编辑器所无法比拟的特性。</p>
+
+<p>本篇着重介绍VIM中最基本的功能，如果之前没有接触过VIM，建议阅读VIM自带的30分钟教程，直接在终端键入vimtutor，或者去安装目录中找vimtutor.bat。</p>
+
+<p>如果实在不想看E文的帮助，<a href='http://vimcdoc.sourceforge.net/'>这里</a>有中文的vimdoc。</p>
+
+<p>VIM有着非常陡峭的学习曲线，所以请各位学习VIM的同志们保持耐心。</p>
+<!-- more -->
+<h2 id='id4'>三种模式</h2>
+
+<p>VIM中常用的模式有三种：普通模式(normal)、插入模式(insert)、可视模式(visual)。</p>
+
+<p>* 普通模式：<br /> 这种模式下可以执行一般的编辑器命令，移动光标、删除文本等，是VIM启动后的默认模式。可以说VIM强大的编辑能力很大程度上源于此模式。 * 插入模式：<br /> 此模式下，大部分按键都会向文本缓冲区中插入文本。 * 可视模式：<br /> 此模式下，移动光标可以选中文本，用于替换和复制等。</p>
+
+<p>PS:在VIM配置文件中键盘映射nmap,imap,vmap的映射分别对应三种模式。</p>
+
+<h2 id='id5'>模式转换</h2>
+
+<p>由普通模式进入插入模式有许多方法最常用的为以下几种：</p>
+
+<ul>
+<li>在光标所在位置之前插入: <code>i</code></li>
+
+<li>在光标所在位置后插入：<code>a</code></li>
+
+<li>在本行行尾插入:<code>A</code></li>
+
+<li>在本行行首插入：<code>I</code></li>
+
+<li>替换当前光标所在字符：<code>r</code></li>
+</ul>
+
+<p>由Normal模式进入可视模式：</p>
+
+<ul>
+<li>普通可视模式：<code>v</code></li>
+
+<li>块可视模式: <code>Ctrl+v</code></li>
+
+<li>返回普通模式：<code>Esc</code></li>
+</ul>
+
+<p>PS:VIM中大部分命令都有以下两种操作格式：</p>
+
+<pre><code>[number] command object
+command [number] object</code></pre>
+
+<p>其中第一个命令是进行number次命令，第二个命令是对number个对象进行command动作</p>
+
+<h2 id='id6'>基础移动</h2>
+
+<ul>
+<li>上下左右：<code>(count)kjhl</code></li>
+
+<li>上下翻页(一整页)：<code>CTRL-f</code>,<code>CRTL-b</code></li>
+
+<li>上下翻页(半页)：<code>CTRL-u</code>,<code>CTRL-d</code></li>
+</ul>
+
+<h2 id='id7'>移动进阶</h2>
+
+<p>* 移动到行末：<code>$</code></p>
+
+<ul>
+<li>移动到行首：<code>0</code>，<code>^</code>(第一个字符)</li>
+
+<li>移动到下个单词词首：<code>w</code></li>
+
+<li>移动到上个单词词首：<code>b</code></li>
+
+<li>移动到下个单词词末：<code>E</code></li>
+
+<li>移动到上个单词词首：<code>e</code></li>
+
+<li>移动到文件开头：<code>gg</code></li>
+
+<li>移动到文件结束：<code>G</code></li>
+</ul>
+
+<h2 id='id8'>撤消与恢复</h2>
+
+<ul>
+<li>撤消一次: <code>u</code></li>
+
+<li>撤消所有动作：<code>U</code></li>
+
+<li>恢复：<code>Ctrl+R</code></li>
+</ul>
+
+<h2 id='id9'>剪切与复制</h2>
+
+<p>* 剪切：<br /> 其实VIM中的删除操作都是剪切，将当前删除的部分存入寄存器&#8221;&#8220;，但是仅能缓存上一次的操作内容 * 复制：<br /> 在可视模式下选中需要复制内容，按<code>y</code>，或者在之前指定寄存器。如果需要整行复制，<code>(count)yy</code> * 粘贴：<br /> 在普通模式下：<code>p</code><br /> 不知道有没有人纠结于从VIM中复制文本，此处说明一下VIM的寄存器，VIM中共有9种寄存器，此处仅介绍5种：<br /> * 无名（unnamed）寄存器：&#8221;&#8220;，上面讲到过来，缓存最后一次操作内容 * 数字（numbered）寄存器：&#8221;0 - &#8220;9，缓存最近操作内容，复制与删除有别 * 具名（named）寄存器：&#8221;a - &#8220;z或&#8221;A - &#8220;Z，指定时可用 * 选择及拖拽（selection and drop）寄存器：&#8221;<em>, &#8220;+, &#8220;~，可用于与外部应用交互，使用前提为系统剪切板可用</em> 模式寄存器（last search pattern）：&#8221;/，缓存最近的搜索模式</p>
+
+<h2 id='id10'>搜索与替换</h2>
+
+<p>* 搜索与替换搜索：<br /> <code>/</code>，从当前光标所在位置向下搜索<br /> <code>？</code>，从当前光标所在位置向上搜索<br />* 替换：<br /> 此处仅说明最简单的一种情况，在可视模式下选中需要被替换的内容区域，<code>:s/被替换部分/替换部分/gc</code>。最后的gc说明替换模式，g代表全局替换，c代表需要确认</p>
+
+<h2 id='id11'>保存与退出</h2>
+
+<ul>
+<li><code>:q!</code> 强制退出，不保存。其中!代表强制</li>
+
+<li><code>:wq</code> 保存并退出</li>
+</ul>
+
+<p>注：学习VIM最重要的是善于运用<code>:h</code></p>

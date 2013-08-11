@@ -1,0 +1,23 @@
+<ol>
+<li>Apache的配置文件http.conf:</li>
+</ol>
+
+<blockquote>
+<p>Options FollowSymLinks<br />AllowOverride all<br />Order Deny,Allow<br />Deny from all<br />Allow from 127.0.0.1</p>
+</blockquote>
+
+<p>加载模块：</p>
+
+<blockquote>
+<p>LoadModule rewrite_module modules/mod_rewrite.so</p>
+</blockquote>
+
+<ol>
+<li>PHP配置文件php.ini（修改后重启才生效！）</li>
+</ol>
+
+<blockquote>
+<p>Include_path = //网站目录</p>
+</blockquote>
+
+<p>3.权限配置：<br />cake需要有对/cake/app文件写入的权限。</p>

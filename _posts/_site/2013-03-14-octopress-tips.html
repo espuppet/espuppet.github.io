@@ -1,0 +1,84 @@
+<p>使用Octopress的几个小技巧和之前遇到的一些配置及使用的问题，这里整理记下来。</p>
+
+<p>主要参考了<a href='http://octopress.org/docs/blogging/plugins'>Blogging With Plugins</a>，<a href='https://github.com/aycabta/octopress-file-binder'>File Binder</a>，<a href='http://yanping.me/cn/blog/2012/03/10/octopress-with-latex/'>在Octopress中使用Latex</a>以及<a href='http://blog.eddie.com.tw/2011/10/30/speed-up-octopress-post-regeneration/'>縮短重新產生文章的時間</a>。</p>
+<!-- more -->
+<h2 id='octopress'>Octopress中图片的插入</h2>
+
+<p>换了个主题以后，发现之前的图片显示不了了，然后查了下文档顺便Google了一下。发现以前的链接写错了，而且Octopress自带有<a href='http://octopress.org/docs/plugins/image-tag/'>Image Tag</a>的插件。</p>
+
+<p>原生的方法是，上传图片到<code>source/images/</code>下，然后按照Markdown的写法就好了，注意链接的形式是<code>/images/name</code>。当然还可以使用image插件写成</p>
+
+<pre><code>`img [classname] /path/to/image`</code></pre>
+
+<p>还有一个File Binder的第三方插件可以将图片放到<code>sources/_posts/YYYY-DD-MM-title_imagename.png</code>(文章位置为<code>sources/_posts/YYYY-DD-MM-title.markdown</code>)，插入图片时，应写成</p>
+
+<pre><code>`img ./imagename.png`</code></pre>
+
+<p>详见<a href='https://github.com/aycabta/octopress-file-binder'>File Binder</a>。</p>
+
+<p>注意：File Binder时不时会导致图片丢失，是因为在deploy之前，如果使用preview的话，会将图片地址转换为localhost:4000开头。所以，如果使用了preview，需要先generate再deploy。</p>
+
+<h2 id='octopress'>Octopress在不同机子之间的拷贝</h2>
+
+<p>如果你有多个工作机，你可能需要将Octopress从github上拷贝一份。</p>
+
+<pre><code>git fetch git@github.com:Username/username.github.com source:master</code></pre>
+
+<h2 id='octopress'>Octopress主页省略显示文章</h2>
+
+<p>开始我检查了一下<code>_config.yml</code>中的<code>excerpt_link</code>参数，已经配置好了。但是首页依旧全文显示文章。后来发现需要在文章中间插入<code>&lt;!-- more --&gt;</code>，这样此标志后的文章就会在首页隐藏，变成<code>excerpt_link</code>配置的文字。</p>
+
+<h2 id='octopresslatex'>在Octopress中使用Latex</h2>
+
+<p>先安装kramdown包</p>
+
+<pre><code>gem install kramdown</code></pre>
+
+<p>再将下面的代码插入<code>&lt;head&gt;</code>和<code>&lt;/head&gt;</code>标签中间，就OK了（文件路径是<code>/source/_include/custom/head.html</code>）。</p>
+<div class='highlight'><pre><code class='js'>    <span class='c'>&lt;!--</span> <span class='nx'>mathjax</span> <span class='nx'>config</span> <span class='nx'>similar</span> <span class='nx'>to</span> <span class='nx'>math</span><span class='p'>.</span><span class='nx'>stackexchange</span> <span class='o'>--&gt;</span>
+    
+    <span class='o'>&lt;</span><span class='nx'>script</span> <span class='nx'>type</span><span class='o'>=</span><span class='s2'>&quot;text/x-mathjax-config&quot;</span><span class='o'>&gt;</span>
+    <span class='nx'>MathJax</span><span class='p'>.</span><span class='nx'>Hub</span><span class='p'>.</span><span class='nx'>Config</span><span class='p'>({</span>
+    <span class='nx'>tex2jax</span><span class='o'>:</span> <span class='p'>{</span>
+    <span class='nx'>inlineMath</span><span class='o'>:</span> <span class='p'>[</span> <span class='p'>[</span><span class='s1'>&#39;$&#39;</span><span class='p'>,</span><span class='s1'>&#39;$&#39;</span><span class='p'>],</span> <span class='p'>[</span><span class='s2'>&quot;\\(&quot;</span><span class='p'>,</span><span class='s2'>&quot;\\)&quot;</span><span class='p'>]</span> <span class='p'>],</span>
+    <span class='nx'>processEscapes</span><span class='o'>:</span> <span class='kc'>true</span>
+    <span class='p'>}</span>
+    <span class='p'>});</span>
+    <span class='o'>&lt;</span><span class='err'>/script&gt;</span>
+    
+    <span class='o'>&lt;</span><span class='nx'>script</span> <span class='nx'>type</span><span class='o'>=</span><span class='s2'>&quot;text/x-mathjax-config&quot;</span><span class='o'>&gt;</span>
+    <span class='nx'>MathJax</span><span class='p'>.</span><span class='nx'>Hub</span><span class='p'>.</span><span class='nx'>Config</span><span class='p'>({</span>
+    <span class='nx'>tex2jax</span><span class='o'>:</span> <span class='p'>{</span>
+    <span class='nx'>skipTags</span><span class='o'>:</span> <span class='p'>[</span><span class='s1'>&#39;script&#39;</span><span class='p'>,</span> <span class='s1'>&#39;noscript&#39;</span><span class='p'>,</span> <span class='s1'>&#39;style&#39;</span><span class='p'>,</span> <span class='s1'>&#39;textarea&#39;</span><span class='p'>,</span> <span class='s1'>&#39;pre&#39;</span><span class='p'>,</span> <span class='s1'>&#39;code&#39;</span><span class='p'>]</span>
+    <span class='p'>}</span>
+    <span class='p'>});</span>
+    <span class='o'>&lt;</span><span class='err'>/script&gt;</span>
+    
+    <span class='o'>&lt;</span><span class='nx'>script</span> <span class='nx'>type</span><span class='o'>=</span><span class='s2'>&quot;text/x-mathjax-config&quot;</span><span class='o'>&gt;</span>
+    <span class='nx'>MathJax</span><span class='p'>.</span><span class='nx'>Hub</span><span class='p'>.</span><span class='nx'>Queue</span><span class='p'>(</span><span class='kd'>function</span><span class='p'>()</span> <span class='p'>{</span>
+            <span class='kd'>var</span> <span class='nx'>all</span> <span class='o'>=</span> <span class='nx'>MathJax</span><span class='p'>.</span><span class='nx'>Hub</span><span class='p'>.</span><span class='nx'>getAllJax</span><span class='p'>(),</span> <span class='nx'>i</span><span class='p'>;</span>
+            <span class='k'>for</span><span class='p'>(</span><span class='nx'>i</span><span class='o'>=</span><span class='mi'>0</span><span class='p'>;</span> <span class='nx'>i</span> <span class='o'>&lt;</span> <span class='nx'>all</span><span class='p'>.</span><span class='nx'>length</span><span class='p'>;</span> <span class='nx'>i</span> <span class='o'>+=</span> <span class='mi'>1</span><span class='p'>)</span> <span class='p'>{</span>
+            <span class='nx'>all</span><span class='p'>[</span><span class='nx'>i</span><span class='p'>].</span><span class='nx'>SourceElement</span><span class='p'>().</span><span class='nx'>parentNode</span><span class='p'>.</span><span class='nx'>className</span> <span class='o'>+=</span> <span class='s1'>&#39; has-jax&#39;</span><span class='p'>;</span>
+            <span class='p'>}</span>
+            <span class='p'>});</span>
+    <span class='o'>&lt;</span><span class='err'>/script&gt;</span>
+    
+    <span class='o'>&lt;</span><span class='nx'>script</span> <span class='nx'>type</span><span class='o'>=</span><span class='s2'>&quot;text/javascript&quot;</span>
+    <span class='nx'>src</span><span class='o'>=</span><span class='s2'>&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML&quot;</span><span class='o'>&gt;</span>
+    <span class='o'>&lt;</span><span class='err'>/script&gt;</span>
+</code></pre></div>
+<h2 id='id15'>代码高亮</h2>
+
+<p>高亮代码使用codeblock即可。</p>
+
+<h2 id='read_yaml'>read_yaml错误</h2>
+
+<p>今天很诡异地发现<code>rake generate</code>竟然通不过了，然后<code>rake preview</code>也没有新的文章了，然后在网上google了方法竟然都没有用。</p>
+
+<p>我的这边提示是<code>invalid byte sequence in utf-8</code>，然后看到网上一个网友提示说，查找下文章中的非法字符。反复查找后发现，由于我使用了filebinder，图片文件是和文章放在一起的，然后最近的一个图片的名字格式命名错误，改完后一切OK。</p>
+
+<h2 id='id16'>提高预览文章速度</h2>
+
+<p>之前预览文章时，都是先<code>rake generate</code>，然后再<code>rake preview</code>，需要等好长时间。最后在网上找到了这篇文章<a href='http://blog.eddie.com.tw/2011/10/30/speed-up-octopress-post-regeneration/'>縮短重新產生文章的時間</a>。</p>
+
+<p>当预览某篇文章时<code>rake isolate[某篇文章]</code>，这样Octopress就只会生成一篇文章并且将其他文章放到<code>/source/_stash</code>里边。当你要发布的时候，要先<code>rake integrate</code>将移到<code>/source/_stash</code>里的文章移回<code>/source/_posts</code>中，再<code>rake generate</code>最后再<code>rake deploy</code>。</p>

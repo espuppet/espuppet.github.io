@@ -1,0 +1,63 @@
+<p>XHProf是facebook开源出来的一个php轻量级的性能分析工具。<br />有一份官方文档的草稿，在这里<br /><a href='http://mirror.facebook.net/facebook/xhprof/doc.html' title='http://mirror.facebook.net/facebook/xhprof/doc.html'>http://mirror.facebook.net/facebook/xhprof/doc.html</a>。</p>
+
+<p>摘重要的翻译一点：</p>
+
+<p>* 平面统计</p>
+
+<p>提供函数级的汇总信息：例如调用次数，inclusive/exclusive消耗时间，内存消耗以及CPU时间</p>
+
+<p>* 分层统计</p>
+
+<p>对于每个函数，XHProf为每个Parent（caller）以及每个child(callee)提供调用次数及时间</p>
+
+<p>* 差别统计</p>
+
+<p>你可能会为各种原因比较两次XHProf运行的数据，比如为了查出导致一个版本库到另一个之间的回归，为了评价代码改变所带来的性能提升，等等。</p>
+
+<p>* 调用图</p>
+
+<p>统计信息可以通过图的方式展示</p>
+
+<p>* 内存信息</p>
+
+<p>XHProf内存统计可以帮助追踪消耗大量内存的函数。 * 局限</p>
+
+<pre><code>XHProf只跟踪一层调用。 
+
+&gt; 比如:  
+&gt; a()调用c()1次  
+&gt; b()调用c()1次  
+&gt; c()调用d()50次  
+&gt; XHProf可以分析出d()在c()中调用50次，但是不能分析出这些调用有多少次来自a()多少次来自b()</code></pre>
+
+<p>安装问题相关：<br />Windows下不知道支不支持，我是在Ubuntu下安装的<br />文档上写的很详细了，注意把directory_for_storing_xhprof_runs替换成你想存储日志文件的地方，并让Apache有写权限。</p>
+
+<p>使用：<br />相关文档上写的也足够清晰了，把代码Copy后执行一遍也就知道是怎么回事了。<br />如果你想获得CPU消耗时间以及内存使用的话注意给xhprof_enable加上参数，写成这样</p>
+
+<blockquote>
+<p>xhprof_enable(XHPROF_FLAGS_CPU XHPROF_FLAGS_MEMORY);</p>
+</blockquote>
+
+<p>值得注意的是文档最后的在生产环境使用XHProf的一些建议：</p>
+
+<ul>
+<li>
+<p>在Linux系统上CPU timer的使用往往是超出实际开销的。在实际环境中使用CPU timer来做统计标准往往会产生较大误差。所以建议使用经历时间及内存消耗模式来分析。</p>
+
+<blockquote>
+<p>// elapsed time profiling (default) memory profiling<br />xhprof_enable(XHPROF_FLAGS_MEMORY);</p>
+</blockquote>
+</li>
+</ul>
+
+<p>* 分析捕捉数据的随机样本是非常有效的，随机样本在实际工作负载方面是非常具有代表性的。<br /> 假设在10000次请求中的抽取1次分析，在请求处理开始前应加入如下代码 &gt; if (mt_rand(1, 10000) == 1) {<br /> &gt; xhprof_enable(XHPROF_FLAGS_MEMORY);<br /> &gt; $xhprof_on = true;<br /> &gt; }</p>
+
+<pre><code>在请求处理结束后应加入这些：
+
+&gt; if ($xhprof_on) {  
+&gt; // stop profiler  
+&gt; $xhprof\_data = xhprof\_disable();
+&gt; 
+&gt; // save $xhprof_data somewhere (say a central DB)  
+&gt; …  
+&gt; }</code></pre>

@@ -1,0 +1,11 @@
+---
+layout: post
+title: "常量"
+date: 2012-12-21 10:59
+categories: Program
+tags: C++ Program Xmind
+---
+
+这是《C++编程思想》第八章常量的总结。
+
+![const](/assets/2012-12-21-const.png)

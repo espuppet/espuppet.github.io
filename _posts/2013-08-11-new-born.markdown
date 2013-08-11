@@ -1,0 +1,16 @@
+---
+layout: post
+title: "新生"
+date: 2013-08-11 12:17
+comments: true
+categories: Essay
+tags: Essay Youth
+---
+
+有一段时间没有打理博客了，最近正好稍微有点时间，实在是忍受不了Octopress的页面生成速度，索性就把博客从Octopress搬回了Jekyll。
+
+站放在Github上，等把新域名买了，再把域名换了，话说Github真是一个优秀的产品。顺便感谢下[Yonsm](https://github.com/Yonsm/NET)提供了这么好的模板，让我省了好多事。
+
+趁着搬迁，就把原先的文章都整理了一下。看自己的文章，就好象在看电影一样，只不过主角是自己。不过三年半的时间，删删剪剪，就这么31篇文章，而且质量都不高，实在惭愧。以后真要勤奋读书，多写文章了。
+
+Jekyll这种写作方式实在迷人，Markdown+Vim的组合让人欲罢不能。同时，也希望这是我博客的最后一次搬迁。
