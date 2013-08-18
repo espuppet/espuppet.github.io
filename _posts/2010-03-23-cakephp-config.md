@@ -2,7 +2,7 @@
 title: Cake环境配置说明
 author: admin
 layout: post
-categories: Program
+categories: Program Web
 tags: Program php
 ---
 
