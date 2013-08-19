@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "冰与火之歌"
-date: 2013-08-18 21:17
+date: 2013-08-17 22:17
 comments: true
 categories: Essay
 tags: Youth Essay
@@ -56,9 +56,9 @@ tags: Youth Essay
 >A:Chaos is a ladder  
 >混乱是阶梯  
 >A:Many who try to climb it fail  
->很多人想网上爬 却失败了  
+>很多人想往上爬 却失败了  
 >A:and never get to try again  
->且永无计划再试  
+>且永无机会再试  
 >A:The fall breaks them  
 >他们坠落而亡  
 >A:And some are given a chance to climb,  
