@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "滴水藏海20130825"
-date: 2013-08-25 19:17
+date: 2013-08-24 19:17
 comments: true
 categories: 滴水藏海
 tags: Youth Links Weekly
@@ -27,6 +27,10 @@ tags: Youth Links Weekly
 [codecademy](http://www.codecademy.com)
 
 这是一个学习编程的网站，里面包括了比较流行的一些Web语言：JavaScript, HTML/CSS, PHP, Python和Ruby。适用了一下，感觉做的还是很好的，完全可以零基础学习这些语言。唯一有些欠缺的地方是，完全针对语言特性进行学习，对于一些相关的背景知识涉及的很少。不过，这个网站完全可以让你快速上手。
+
+[你刚访问了淘宝？](http://mp.weixin.qq.com/mp/appmsg/show?__biz=MjM5MTY3ODcxNA==&appmsgid=10000128&itemidx=1&sign=7885c0b2c56d6399930781ebc8c0b444#wechat_redirect)
+
+通俗的语言解释了互联网背后的一些技术。
 
 # Reading
 
