@@ -1,0 +1,31 @@
+---
+layout: post
+title: "滴水藏海20130908"
+date: 2013-09-08 10:59
+categories: 滴水藏海
+tags: Youth Links Weekly
+---
+
+# Tech
+
+[动态规划：从新手到专家](http://hawstein.com/posts/dp-novice-to-advanced.html)
+
+一篇讲解动态规划的文章，浅显易懂。
+
+[Google 开源项目风格指南](http://zh-google-styleguide.readthedocs.org/en/latest/google-cpp-styleguide/)
+
+Google C++ 风格文档。
+
+[深入理解PHP内核](http://www.php-internals.com/book/)
+
+现在网上真是什么都能找到，一直想找找相关资料查查，有时间要好好阅读。
+
+# Reading
+
+[缅怀程浩](http://taosay.net/?p=717)
+
+昨天晚上才读到这篇文章，深深震撼。生活中总是有些牛逼闪闪的人，或让人望其项背，或高山仰止。看过程浩的这些文字，自己真是羞愧难当，我们拥有的东西，比他要多得多，却依旧贪恋那些未曾拥有的虚无飘渺。摘抄几句自勉：
+
+`我总是幻想，人间就是一条长长的大路，每个人都是一只背着重壳的蜗牛，壳里装着理想、誓言，以及所有关于过去的执念。我们在路上爬行，寻找传说中的天堂。能够坚持到底的人，很少；半途而废的人，很多。但无论是坚持，还是放弃，这两种人活得都不轻松。那些坚持的人，哀叹希望的渺茫；那些放弃的人，却已经失去了希望。`
+
+`天堂未必在前方，但地狱一定在身后。`
