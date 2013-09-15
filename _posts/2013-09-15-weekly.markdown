@@ -1,0 +1,28 @@
+---
+layout: post
+title: "滴水藏海20130915"
+date: 2013-09-15
+comments: true
+categories: 滴水藏海
+tags: Youth Links Weekly
+---
+
+# Tech
+
+[Cracking the coding interview--问题与解答](http://hawstein.com/posts/ctci-solutions-contents.html)
+
+唉，早看见就好了。非常不错的面试题目，总结的也非常好。
+
+[crunchbang](http://crunchbang.org/)
+
+最先在[vpsee](http://www.vpsee.com/2013/08/introduction-to-crunchbang-linux/)上看到推荐，后来在v2ex上又看到了，就拿来试了下，然后爱不释手，我现在正在用Cruchbang写这篇文章呢。
+
+[我的美国CS面试经验分享 ](http://blog.csdn.net/sigh1988/article/details/9774845)
+
+面试经验分享，蛮好的。
+
+# Reading
+
+[做一个特立独行的人需要付出什么代价？会有什么收获？](http://www.zhihu.com/question/21072391)
+
+又是程浩，牛B的人生果然不需要解释。希望有一天我能成为一个他这样的人吧。
