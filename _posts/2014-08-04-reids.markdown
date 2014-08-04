@@ -1,0 +1,21 @@
+---
+layout: post
+title: "初识Redis"
+date: 2014-08-04 22:09
+categories: web
+tags: Redis Database
+---
+
+最近公司在进行压力测试时发现Mysql中的session表读写成为系统的瓶颈。于是，需要将其移到其他数据库中，调研后发现Redis比较适合。
+
+Redis是一个基于内存的键值对存储数据库，由于内置了丰富的数据结构，其应用场景也较为广泛。[这里](http://oldblog.antirez.com/post/take-advantage-of-redis-adding-it-to-your-stack.html)是Redis作者列举的几种比较适合使用Redis的应用场景。现在，Redis大范围作为缓存使用的。[这篇文章](http://timyang.net/data/mcdb-tt-redis/)将其与Memcache, MemcacheDB以及Tokyo Tyrant做了对比。
+
+除此外，Redis还内置了[Pub/Sub](http://redis.io/topics/pubsub)，非常方便用于事件推送。
+
+Redis现有的高可靠性架构一般通过以下方式实现：
+
+1.Sentinel   
+Redis官方给出的一种分布式架构方式，通过部属Sentinel client可以实现监控，通知以及自动故障恢复。关于Sentinel可以参考官方文档，[Redis Sentinel Documentation](http://redis.io/topics/sentinel)。但是，这种方式需要客户端来处理各种事件，而且相应的客户端对于Sentinel的支持不够完善。
+
+2.Keepalived   
+在官方Sentinel没有推出之前，许多HA是使用Keepalived实现的，具体实现方式参考[这里](http://heylinux.com/archives/1942.html)。
