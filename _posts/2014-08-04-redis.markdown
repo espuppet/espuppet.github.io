@@ -2,6 +2,7 @@
 layout: post
 title: "初识Redis"
 date: 2014-08-04 22:09
+comments: true
 categories: web
 tags: Redis Database
 ---
@@ -10,7 +11,11 @@ tags: Redis Database
 
 Redis是一个基于内存的键值对存储数据库，由于内置了丰富的数据结构，其应用场景也较为广泛。[这里](http://oldblog.antirez.com/post/take-advantage-of-redis-adding-it-to-your-stack.html)是Redis作者列举的几种比较适合使用Redis的应用场景。现在，Redis大范围作为缓存使用的。[这篇文章](http://timyang.net/data/mcdb-tt-redis/)将其与Memcache, MemcacheDB以及Tokyo Tyrant做了对比。
 
-除此外，Redis还内置了[Pub/Sub](http://redis.io/topics/pubsub)，非常方便用于事件推送。
+除此外，Redis还内置了[Pub/Sub](http://redis.io/topics/pubsub)，非常方便用于事件推送，同时还提供了[Keyspace Notifications](http://redis.io/topics/notifications)，通过Pub/Sub的方式提供消息通知。但是，Redis的Pub/Sub 方式还是比较原生的，其无法提供稳定性保障，即
+
+> Because Redis Pub/Sub is fire and forget currently there is no way to use this feature if you application demands reliable notification of events, that is, if your Pub/Sub client disconnects, and reconnects later, all the events delivered during the time the client was disconnected are lost.
+
+初次使用NoSQL的同学可能对键值对设计比较迷茫，可以参考[浅谈redis数据库的键值设计](http://www.hoterran.info/redis_kv_design)，进阶一点的还有这篇文章[NoSQL Data Modeling Techniques](http://highlyscalable.wordpress.com/2012/03/01/nosql-data-modeling-techniques/)（中文版[NoSQL 数据建模技术](http://coolshell.cn/articles/7270.html)）。
 
 Redis现有的高可靠性架构一般通过以下方式实现：
 

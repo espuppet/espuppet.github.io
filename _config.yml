@@ -3,7 +3,7 @@ permalink: /:year/:month/:day/:title/
 url: http://espuppet.github.io
 name: 逃跑的木偶
 author: espuppet
-duoshuo: espuppet
+disqus: espuppet
 github: espuppet
 pygments: true
 safe: true
