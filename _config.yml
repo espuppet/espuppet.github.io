@@ -10,3 +10,5 @@ safe: true
 paginate: 15
 about: ""
 show_drafts: false
+gems:
+    - jekyll-sitemap
