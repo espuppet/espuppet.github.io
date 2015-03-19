@@ -14,4 +14,4 @@ tags: Essay Apple Jobs
 
 祝他一路走好！
 
-<embed src="http://player.youku.com/player.php/sid/XMzEwMjY1NjA0/v.swf" allowFullScreen="true" quality="high" width="720" height="600" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+<embed src="http://player.youku.com/player.php/sid/XMzEwMjY1NjA0/v.swf" allowFullScreen="true" quality="high" width="600" height="500" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
